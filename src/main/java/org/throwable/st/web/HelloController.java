@@ -14,9 +14,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
-    @RequestMapping(value = "/hello.html",method = RequestMethod.GET)
+
+    @RequestMapping(value = "/hello/view.html",method = RequestMethod.GET)
+    public String helloView(){
+        return "index";
+    }
+
+
+    @RequestMapping(value = "/hello.html", method = RequestMethod.GET)
     @ResponseBody
-    public String hello(@RequestParam("name")String name){
+    public String hello(@RequestParam("name") String name) {
         System.out.println("name = " + name);
         return "hello";
     }
