@@ -1,10 +1,10 @@
 package org.throwable.st.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author zhangjinci
@@ -15,16 +15,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloController {
 
 
-    @RequestMapping(value = "/hello/view.html",method = RequestMethod.GET)
-    public String helloView(){
+    @RequestMapping(value = "/hello/view.html", method = RequestMethod.GET)
+    public String helloView() {
         return "index";
     }
 
 
     @RequestMapping(value = "/hello.html", method = RequestMethod.GET)
-    @ResponseBody
-    public String hello(@RequestParam("name") String name) {
-        System.out.println("name = " + name);
-        return "hello";
+    public String hello(@RequestParam("name") String name, ModelMap modelMap) {
+        modelMap.addAttribute("name", name);
+        return "msg";
     }
 }
